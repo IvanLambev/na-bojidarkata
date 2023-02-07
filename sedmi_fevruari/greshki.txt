@@ -1,0 +1,28 @@
+remdup:
+	line 16 int -> char
+	line 19 >= -> >
+
+sortedevenindexesproduct:
+	line 8 i -> j 
+	line 30 product = 1
+	line 31 i = 2
+
+
+printoddnumbersfrom2darr:
+	line 7 3 -> 2
+	line 8 2 -> 3
+
+longestsubstrwithoutrep (not ther intended solution!):
+	line 18 && -> ||
+
+longestpolyndromesubstr:
+	line 34 - -> +
+
+eachcharonnewline: 
+	line 18 int -> char 
+	line 18 '0' -> '\0'
+
+binsearchnames:
+	line 40 < -> <=
+	line 45 - -> +
+	line 47 + -> -
