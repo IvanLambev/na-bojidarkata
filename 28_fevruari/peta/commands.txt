@@ -1,0 +1,8 @@
+# Compile maths.c and create object file
+gcc -c maths.c -o maths.o
+
+# Create static library from object file
+ar rcs libmaths.a maths.o
+
+# Compile main.c and link with libmaths.a
+gcc -o main main.c -L. -lmaths
