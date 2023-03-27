@@ -1,28 +1,25 @@
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror -std=c99
+CFLAGS = -Wall -Wextra -pedantic -std=c99
 LDFLAGS = -lm
 
-all: safeint.o safeadd safesubtract safemultiply safedivide
+.PHONY: all clean
+
+all: safeadd safesubtract safemultiply safedivide
 
 safeint.o: safeint.c safeint.h
-    $(CC) $(CFLAGS) -c safeint.c
+	$(CC) $(CFLAGS) -c $< -o $@
 
-safeadd: safeadd.c safeint.o util.o
-    $(CC) $(CFLAGS) -o safeadd safeadd.c safeint.o util.o $(LDFLAGS)
+safeadd: safeadd.c safeint.o
+	$(CC) $(CFLAGS) $^ -o $@ $(LDFLAGS)
 
-safesubtract: safesubtract.c safeint.o util.o
-    $(CC) $(CFLAGS) -o safesubtract safesubtract.c safeint.o util.o $(LDFLAGS)
+safesubtract: safesubtract.c safeint.o
+	$(CC) $(CFLAGS) $^ -o $@ $(LDFLAGS)
 
-safemultiply: safemultiply.c safeint.o util.o
-    $(CC) $(CFLAGS) -o safemultiply safemultiply.c safeint.o util.o $(LDFLAGS)
+safemultiply: safemultiply.c safeint.o
+	$(CC) $(CFLAGS) $^ -o $@ $(LDFLAGS)
 
-safedivide: safedivide.c safeint.o util.o
-    $(CC) $(CFLAGS) -o safedivide safedivide.c safeint.o util.o $(LDFLAGS)
-
-util.o: util.c util.h
-    $(CC) $(CFLAGS) -c util.c
+safedivide: safedivide.c safeint.o
+	$(CC) $(CFLAGS) $^ -o $@ $(LDFLAGS)
 
 clean:
-    rm -f safeadd safesubtract safemultiply safedivide *.o
-
-
+	rm -f safeint.o safeadd safesubtract safemultiply safedivide
