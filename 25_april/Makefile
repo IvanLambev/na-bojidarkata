@@ -1,14 +1,17 @@
+CC=gcc
+CFLAGS=-c -Wall
+LDFLAGS=-lm
 
 all: quadraticroots
 
 quadraticroots: quadraticroots.o main.o
-	gcc -lm quadraticroots.o main.o -o quadraticroots
+	$(CC) quadraticroots.o main.o -o quadraticroots $(LDFLAGS)
 
 quadraticroots.o: quadraticroots.c quadraticroots.h
-	gcc -c quadraticroots.c
+	$(CC) $(CFLAGS) quadraticroots.c
 
 main.o: main.c quadraticroots.h
-	gcc -c main.c
+	$(CC) $(CFLAGS) main.c
 
 clean:
 	rm -f quadraticroots.o main.o quadraticroots
