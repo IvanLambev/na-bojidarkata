@@ -41,7 +41,7 @@ int main()
                 printf("Process ID: %lld; Process name: %s\n", processes[i].id, processes[i].name);
             break;
         case 3:
-            printf(" Enter ID of process to stop: ");
+            printf(" Enter process's ID to stop it : ");
             long long stop_id;
             scanf("%lld", &stop_id);
             stopprocess(stop_id);
